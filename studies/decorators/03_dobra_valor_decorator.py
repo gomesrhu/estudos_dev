@@ -1,4 +1,8 @@
+from functools import wraps
+
 def double_value(func):
+
+    @wraps(func)
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs) * 2
     return wrapper
@@ -6,5 +10,3 @@ def double_value(func):
 @double_value
 def my_number(n):
     return n
-
-#print(my_number(39))

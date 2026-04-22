@@ -1,6 +1,10 @@
+from functools import wraps
+
 def upper_converter(func):
+
+    @wraps(func)
     def wrapper(*args, **kwargs):
-        formatted = func(*args, **kwargs).upper()
+        formatted = str(func(*args, **kwargs)).upper()
         return formatted
     return wrapper
 
@@ -8,4 +12,3 @@ def upper_converter(func):
 def my_msg(msg):
     return msg
 
-#my_msg("it's all small here...")
