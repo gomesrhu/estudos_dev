@@ -1,5 +1,9 @@
+from functools import wraps
+
 def prefix(text):
     def decorator(func):
+
+        @wraps(func)
         def wrapper(*args, **kwargs):
             func_string = func(*args, **kwargs)
             formated_string = f"{text} {func_string}"
