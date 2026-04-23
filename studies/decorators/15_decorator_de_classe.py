@@ -1,26 +1,25 @@
-from time import time
 from datetime import datetime
+from functools import update_wrapper
+
 
 class TimeRecord:
-    def __init__(self):
-        self.time = ""
+    def __init__(self, func):
+        update_wrapper(self, func)
+        self.func = func
 
-    def __call__(self, func):
-        def wrapper(*args, **kwargs):
-            result = func(*args, **kwargs)
+    def __call__(self, *args, **kwargs):
 
-            timestamp = datetime.now()
-            formatted_timestamp = timestamp.strftime("%d/%m/%Y - %H:%M:%S")
-            self.time = formatted_timestamp
+        result = self.func(*args, **kwargs)
 
-            with open('function_log.txt', 'a') as my_file:
-                my_file.write(f"{self.time} \n")
+        timestamp = datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-            return result
-        return wrapper
+        with open('function_log.txt', 'a') as my_file:
+            my_file.write(f"Call function {self.func.__name__} at:{timestamp} \n")
 
-class_decorator = TimeRecord()
+        return result
 
-@class_decorator
+
+@TimeRecord
 def decorated_class_sum(x, y):
     return x+y
+
