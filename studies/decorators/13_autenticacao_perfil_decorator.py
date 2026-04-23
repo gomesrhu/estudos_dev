@@ -32,6 +32,3 @@ def delete_data(logged_user, data):
     """
     return f"{logged_user.get("name", None)} deleted data: {data}"
 
-
-
-

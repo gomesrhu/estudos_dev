@@ -8,7 +8,7 @@ def simple_decorator(func):
     return wrapper
 
 @simple_decorator
-def minha_mensagem(msg):
+def print_msg(msg):
     """This is my docstring and it's 'preserved' thanks to the functools.wraps"""
     print(msg)
 
