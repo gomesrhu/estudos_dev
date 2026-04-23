@@ -8,8 +8,8 @@ def retry(n):
                     return result
                 except:
                     count += 1
-                    print(f"Attemp number: {count} to run the function: '{func.__name__}' ")
-            print(f"All {n} attempts failed")
+                    print(f"Attempt number: {count} to run the function: '{func.__name__}' ")
+            raise RuntimeError(f"All {n} attempts failed")
         return wrapper
     return decorator
 
