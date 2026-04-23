@@ -15,7 +15,6 @@ def no_recursion_factorial(n):
     if n > 1:
         total = 1
         for i in range(2, n+1):
-            atual = total * i
-            total = atual
+            total *= i
     return total
 
