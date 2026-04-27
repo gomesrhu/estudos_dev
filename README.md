@@ -102,3 +102,80 @@ Decorator de Classe:
 Crie um decorator que não seja uma função, mas sim uma classe (usando o método `__call__`), que registre o horário exato de cada chamada da função decorada em um arquivo `.txt`.
 
 ---
+
+### tratamento de erros (try/except)
+Nesta seção, explorei a resiliência de código em Python, implementando mecanismos para capturar e tratar exceções de forma que o fluxo do programa não seja interrompido abruptamente por falhas previstas.
+
+#### Nível Fácil (01 ao 05)
+Foco nos fundamentos da sintaxe try/except e no mapeamento das exceções mais comuns do Python (Built-in Exceptions). Os exercícios abordam a captura de erros de tipos (ValueError), divisões impossíveis (ZeroDivisionError), chaves inexistentes em dicionários (KeyError) e índices inválidos em sequências (IndexError), além da manipulação básica de arquivos.
+
+#### Nível Intermediário (06 ao 10)
+Exploração do controle de fluxo avançado utilizando as cláusulas else (executada em caso de sucesso) e finally (executada obrigatoriamente). Aborda a propagação manual de exceções com o comando raise, a captura de erros de importação de módulos e a hierarquia de exceções, diferenciando tratamentos específicos de capturas genéricas.
+
+#### Nível Avançado (11 ao 15)
+Aplicação de tratamento de erros em cenários simulados de sistemas reais. O foco está na criação e captura de exceções personalizadas (Custom Exceptions), automação de validações complexas com loops de repetição, simulação de falhas de conectividade (APIs), gestão de permissões de sistema e o tratamento de interrupções de hardware/usuário (KeyboardInterrupt).
+
+---
+
+## Lista de exercícios (tratamento de erros)
+
+### Exercício 1
+Divisão Segura: 
+Crie um programa que peça dois números e realize a divisão. Trate o erro de divisão por zero (ZeroDivisionError) e entrada de dados inválida (ValueError).
+
+### Exercício 2
+Conversão de Tipos: 
+Peça para o usuário digitar uma lista de números separados por vírgula. Tente converter cada elemento para int. Se houver algo que não seja número, informe qual elemento falhou e pule para o próximo.
+
+### Exercício 3
+Acesso a Dicionário: 
+Crie um dicionário com 5 produtos e preços. Peça ao usuário o nome de um produto e exiba o preço. Trate o erro caso o produto não exista no dicionário (KeyError).
+
+### Exercício 4
+Índice de Lista: 
+Dada a lista frutas = ["Maçã", "Banana", "Uva"], peça um número ao usuário e exiba a fruta naquela posição. Trate o erro de índice fora do alcance (IndexError).
+
+### Exercício 5
+Leitura de Arquivo Simples: 
+Tente abrir um arquivo chamado dados.txt para leitura. Se o arquivo não existir, exiba uma mensagem amigável em vez do erro do sistema (FileNotFoundError).
+
+### Exercício 6
+Calculadora de Média com finally: 
+Crie uma função que calcula a média de uma lista. Independentemente de a lista estar vazia ou conter erros, use o bloco finally para imprimir "Processamento finalizado".
+
+### Exercício 7
+Soma de Inteiros com else: 
+Peça dois números. Se a conversão para inteiro e a soma funcionarem perfeitamente, use o bloco else para exibir o resultado. Se falhar, use o except.
+
+### Exercício 8
+Validação de Idade: 
+Peça a idade do usuário. Se a idade for menor que 0 ou maior que 150, use o comando raise ValueError("Idade impossível") e capture esse erro no bloco except para exibir a mensagem customizada.
+
+### Exercício 9
+Busca de Módulo: 
+Tente importar uma biblioteca que não existe (ex: import biblioteca_fantasma). Capture o ImportError e sugira ao usuário verificar se o pacote está instalado.
+
+### Exercício 10
+Tratamento Genérico vs. Específico: 
+Crie um código que possa gerar múltiplos erros (ex: erro de matemática e erro de variável não definida). Escreva blocos except específicos para cada um e um except Exception as e ao final para capturar qualquer outro erro inesperado, exibindo a mensagem do erro original.
+
+### Exercício 11
+Simulador de Saque Bancário: 
+Crie uma função sacar(valor). Se o valor for maior que o saldo (invente um saldo inicial), dispare uma exceção personalizada chamada SaldoInsuficienteError. Capture-a fora da função.
+
+### Exercício 12
+Consumo de API Hipotética: 
+Simule uma requisição web. Crie uma lista de dicionários que representam "status codes" (200, 404, 500). Se o status for diferente de 200, dispare e trate exceções simulando falha de conexão ou servidor fora do ar.
+
+### Exercício 13
+Escrita em Arquivo Protegido: 
+Tente escrever em um arquivo que está configurado como "somente leitura" (ou simule isso tentando escrever em uma pasta do sistema sem permissão). Trate o PermissionError.
+
+### Exercício 14
+Iterador Infinito Interrompido: 
+Crie um loop while True que pede números e os soma. O loop só deve parar se o usuário pressionar Ctrl+C. Capture o KeyboardInterrupt para exibir a soma total antes de fechar o programa.
+
+### Exercício 15
+Validador de Senha Complexo: 
+Crie uma função que valida uma senha (mínimo 8 caracteres, uma letra e um número). Dispare exceções diferentes para cada regra violada e use um loop para forçar o usuário a digitar uma senha válida, tratando todos os erros até que a condição de sucesso seja atingida.
+
